@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글쓰기</title>
+  </head>
+  <body>
+    <form
+      action="https://www.naver.com"
+      method="post"
+      enctype="application/x-www-form-urlencoded"
+    >
+      <div>
+        <label for="title">제목 : </label>
+        <input type="text" name="title" id="title" size="80" maxlength="255" />
+      </div>
+
+      <div>
+        <textarea
+          name="contents"
+          id="contents"
+          rows="50"
+          cols="80"
+          maxlength="1000"
+          placeholder="여기에 본문을 입력해주세요."
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="appointmentTime">예약시간</label>
+        <input type="datetime-local" name="appointment-time" />
+      </div>
+
+      <div>
+        <label for="appointment">예약할거야?</label>
+        <input type="radio" name="appointment" value="YES" />YES
+        <input type="radio" name="appointment" value="NO" />NO
+      </div>
+
+      <button type="submit">글쓰기 완료</button>
+    </form>
+  </body>
+</html>

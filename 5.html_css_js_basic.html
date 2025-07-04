@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS JS BASIC</title>
+
+    <!-- 외부 스타일 적용을 위한 link -->
+    <link rel="stylesheet" href="css/mystyle.css" />
+
+    <style>
+      /* 태그 선택 */
+      p {
+        color: grey;
+        text-align: center;
+      }
+
+      /* 클래스 선택 */
+      .c1 {
+        color: blue;
+      }
+
+      .c2 {
+        text-decoration: underline;
+      }
+
+      /* ID 선택 */
+      #i1 {
+        color: red;
+      }
+
+      div > h2 {
+        color: green;
+      }
+    </style>
+
+    <!-- <script src="/js/myjs.js"></script> -->
+    <script>
+      // 이 시점에 load1은 존재하지 않음
+      getElementById("load1").innerHTML = "load 1이 변경 됨";
+
+      var isFirst = false;
+      var original1 = null;
+
+      function updateF1() {
+        if (!isFirst) {
+          original1 = document.getElementById("f1").innerText;
+          isFirst = true;
+        }
+        document.getElementById("f1").innerHTML = "f1이 변경 됨";
+      }
+
+      function restoreF1() {
+        document.getElementById("f1").innerText = original1;
+      }
+    </script>
+  </head>
+  <body>
+    <!-- css 스타일 적용방법 3가지 -->
+    <!-- style 적용은 대체적으로 구체적인 요소가 우선함. -->
+
+    <!-- 인라인 스타일 : 태그 내에서 style옵션 사용 -->
+    <!-- 내부스타일보다 있더라도 인라인 스타일이 적용됨 -->
+    <p style="color: green; text-align: center">인라인 스타일 적용</p>
+
+    <!-- 내부스타일 적용 : 태그 선택자, 클래스 선택자, ID 선택자 -->
+    <p>내부 스타일 적용</p>
+
+    <p>태그 선택자 적용</p>
+
+    <p class="c1">클래스 선택자 적용</p>
+    <!-- 클래스 중첩 적용하는 경우 -->
+    <p class="c1 c2">클래스 선택자 적용</p>
+
+    <p id="i1">ID 선택자 적용</p>
+
+    <!-- 외부 스타일 -->
+    <p id="external">외부 스타일 적용</p>
+
+    <!-- 자식 선택자 -->
+    <div>
+      <h2>자식 선택자 예시(div안의 h2)</h2>
+    </div>
+    <h2>자식 선택자 예시(그냥 h2)</h2>
+
+    <h2 style="text-align: center">JavaScript 예시</h2>
+    <!-- JS적용방법 2가지 : 내부스크립트(head, body), 외부스크립트 -->
+
+    <p id="load1">JS 로드 순서 1</p>
+    <!-- 반영 안 됨 -->
+    <p id="load2">JS 로드 순서 2</p>
+    <!-- 반영 됨 -->
+
+    <p id="f1">변경되기 전의 f1</p>
+    <button onclick="updateF1()">내용1 변경</button>
+    <button onclick="restoreF1()">내용1 복구</button>
+    <p id="f2">변경되기 전의 f2</p>
+    <button onclick="updateF2()">내용2 변경</button>
+    <button onclick="restoreF2()">내용2 복구</button>
+    <p id="f3">변경되기 전의 f3</p>
+    <button onclick="updateF3()">내용3 변경</button>
+    <button onclick="restoreF3()">내용3 복구</button>
+
+    <!-- HTML문서는 상단의 head부터 순차적으로 실행되기 떄문에, 순서에 따라 반영이 안 될 수 있음 -->
+    <script>
+      document.getElementById("load2").innerHTML = "load 2번 변경 됨";
+
+      var original2 = document.getElementById("f2").innerText;
+
+      function updateF2() {
+        document.getElementById("f2").innerHTML = "f2가 변경 됨";
+      }
+
+      function restoreF2() {
+        document.getElementById("f2").innerText = original2;
+      }
+    </script>
+    
+    <!-- 보통 여기서 js파일을 가져옴 -->
+    <script src="/js/myjs.js"></script>
+  </body>
+</html>
