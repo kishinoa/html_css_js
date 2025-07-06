@@ -39,19 +39,24 @@
       // 이 시점에 load1은 존재하지 않음
       document.getElementById("load1").innerHTML = "load 1이 변경 됨";
 
-      var isFirst = false;
+      var isFirst1 = false;
       var original1 = null;
 
       function updateF1() {
-        if (!isFirst) {
-          original1 = document.getElementById("f1").innerText;
-          isFirst = true;
-        }
+        getOriginalF1();
         document.getElementById("f1").innerHTML = "f1이 변경 됨";
       }
 
       function restoreF1() {
+        getOriginalF1(); 
         document.getElementById("f1").innerText = original1;
+      }
+
+      function getOriginalF1() {
+        if (!isFirst1) {
+          original1 = document.getElementById("f1").innerText;
+          isFirst1 = true;
+        }
       }
     </script>
   </head>
@@ -94,7 +99,7 @@
     <p id="f1">변경되기 전의 f1</p>
     <button onclick="updateF1()">내용1 변경</button>
     <button onclick="restoreF1()">내용1 복구</button>
-    
+
     <p id="f2">변경되기 전의 f2</p>
     <button onclick="updateF2()">내용2 변경</button>
     <button onclick="restoreF2()">내용2 복구</button>
@@ -109,6 +114,8 @@
 
       var original2 = document.getElementById("f2").innerText;
 
+      let isFirst3 = false;
+
       function updateF2() {
         document.getElementById("f2").innerHTML = "f2가 변경 됨";
       }
@@ -116,6 +123,7 @@
       function restoreF2() {
         document.getElementById("f2").innerText = original2;
       }
+
     </script>
 
     <!-- 보통 여기서 js파일을 가져옴 -->
