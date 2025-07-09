@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js json</title>
+</head>
+<body>
+    <table border="1" style="border-collapse: ; margin: autos;">
+        <thead>
+            <tr>
+                <th>name</th><th>age</th><th>score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="name"></td>
+                <td id="age"></td>
+                <td id="score"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table border="1" style="border-collapse: ; margin: autos;">
+        <thead>
+            <tr>
+                <th>name</th><th>age</th><th>score</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyId">
+        </tbody>
+    </table>
+
+    <script>
+        const jsonText = '{"name":"Alice","age":25,"score":85}';
+        // json을 javascript의 객체로 역직렬화(parsing)
+        const obj1 = JSON.parse(jsonText);
+        document.getElementById("name").innerHTML = obj1.name;
+        document.getElementById("age").innerHTML = obj1.age;
+        document.getElementById("score").innerHTML = obj1.score;
+
+        const jsonText2 = '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]';
+        const obj2 = JSON.parse(jsonText2);
+        let t1 = document.getElementById("tbodyId")
+        for(let i = 0; i < obj2.length; i++) {
+            // js에서 문자열에 js변수를 끼어넣을때 빽틱(`)에 $()를 활용
+            t1.innerHTML += `<tr><td>${obj2[i].name}</td><td>${obj2[i].age}</td><td>${obj2[i].score}</td></tr>`;
+        }
+
+        // json직렬화
+        const jsonText3 = JSON.stringify(obj2);
+        console.log(jsonText3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js function</title>
+    <script>
+        function basicFunction() {
+            console.log("hello world");
+        }
+        const variableFunction1 = function() {
+            console.log("hello world1");
+        }
+        // function 대신 => 로 가능
+        // 만약 실행문이 1줄이라면, {} 생략가능
+        const variableFunction2 = () => console.log("hello world2");
+
+        function returnFunction() {
+            console.log(makeString1());
+            console.log(makeString2());
+            console.log(makeString3());
+        }
+
+        function makeString1() {
+            return "hello javascript";
+        }
+        const makeString2 = () => { return "hello javascript2";}
+        const makeString3 = () => "hello javascript3";
+        function paramFunction1(a, b) {
+            console.log(a+b);
+        }
+        function paramFunction2(name='홍길동') {
+            console.log(name);
+        }
+        function paramFunction3(arr) {
+            console.log(arr);
+        }
+        function paramFunction4(...arr) {
+            console.log(arr);
+        }
+        function functionWithException() {
+            // 없는 함수 호출 시 예외발생
+            // 프론트에서 예외처리는 주로, 사용자에게 안내문구 알려주거나, 후속조치를 위해 사용
+            try {
+                example();
+            }
+            catch(e) {
+                console.log(e);
+            }
+            console.log("hello world");
+        }
+        function showPerson() {
+            const p1 = createPerson('홍길동', 30);
+            console.log(p1);
+            console.log(p1.printPerson())
+        }
+        function createPerson(name, age) {
+            return {
+                name:name,
+                age:age,
+                printPerson:function() {
+                    return "이름은 " + this.name + " 나이는 " + this.age;
+                }
+            };
+        }
+        function reloadFunction() {
+            // 화면새로고침 함수
+            window.location.reload();
+        }
+        function moveScreen() {
+            window.location.href = "https://naver.com";
+        }
+    </script>
+</head>
+<body>
+    <h2>기본 함수 호출</h2>
+    <button onclick="basicFunction()">함수 호출 basic</button>
+    <button onclick="variableFunction1()">변수함수1</button>
+    <button onclick="variableFunction2()">변수함수2</button>
+    <button onclick="returnFunction()">리턴이 있는 함수 호출</button>
+    <button onclick="paramFunction1(1,2)">매개변수 있는 함수 호출1</button>
+    <button onclick="paramFunction2('김씨')">매개변수 있는 함수 호출2</button>
+    <button onclick="paramFunction3([1,2,3,4,5])">매개변수 있는 함수 호출3</button>
+    <button onclick="paramFunction4(1,2,3,4,5)">매개변수 있는 함수 호출4</button>
+
+    <h2>js 예외처리</h2>
+    <button onclick="functionWithException()">예외처리함수 호출</button>
+
+    <h2>객체 안에 있는 함수 호출</h2>
+    <button onclick="showPerson()">Person객체 생성 및 조회</button>
+
+    <h2>window 객체</h2>
+    <button onclick="reloadFunction()">화면새로고침</button>
+    <button onclick="moveScreen()">화면이동</button>
+
+    <!-- 사용자가 html화면내에서 특정행위(event)를 했을 때 자동실행되는 함수 -->
+    <h2>event Listener 객체 활용</h2>
+    <button id="button1">버튼1</button>
+    <button onclick="scrollEvent()">버튼2</button>
+
+    <h2>html요소 동적으로 생성</h2>
+    <button onclick="addItem()">항목추가</button>
+    <div id="target">
+        <input type="text"><br>
+    </div>
+    <script>
+        const b1 = document.getElementById("button1");
+        if(b1) {
+            b1.addEventListener("click", ()=>alert("hello world"));
+        }
+        function scrollEvent() {
+            window.addEventListener('scroll', ()=>console.log('hello world2'));
+        }
+        function addItem() {
+            let t1 = document.getElementById("target");
+            t1.innerHTML += '<input type="text"><br>';
+        }
+    </script>
+</body>
+</html>

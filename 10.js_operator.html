@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js operator</title>
+    <script>
+        function biggerNum(a, b) {
+            const bigger = a > b ? a : b;
+            let element = document.getElementById("result");
+            element.innerHTML = bigger;
+        }
+        function stringCompare() {
+            let st1 = 'xxx';
+            let st2 = 'yyy';
+            console.log(st1>st2);
+        }
+    </script>
+</head>
+<body>
+    <h2>연산자 예시</h2>
+    <button onclick="biggerNum(3, 4)">삼항연산자 결과</button>
+    <p id="result">결과값</p>
+    <button onclick="stringCompare()">문자비교 결과</button>
+
+    <h2>void 연산자 활용</h2>
+    <!-- a 태그에서 href는 link연결 시 사용하는데, 아무런 동작도 하지 않게 하기 위해서 void사용 -->
+    <a href="javascript:void(0)">클릭1</a>
+</body>
+</html>

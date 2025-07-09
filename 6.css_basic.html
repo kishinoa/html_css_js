@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>css basic</title>
+</head>
+    <!-- 별도의 설정이 없을때 16px -->
+<body>
+    <h2>글꼴의 상대크기</h2>
+     <p>부모 글꼴의 본래 크기</p>
+     <!-- em : 부모요소에 대한 배수, % : 부모요소에 대한 퍼센티지지 -->
+     <p style="font-size: 150%;">부모 글꼴의 1.5배 크기</p>
+    <div style="font-size: 20px;">
+        부모텍스트
+        <p style="font-size: 1.5em;">자식텍스트</p>
+    </div>
+
+    <!-- 디스플레이 높이에 대한 비율 : vh -->
+     <p style="font-size: 3vh;">높이에 대한 상대 크기</p>
+
+    <!-- 디스플레이 너비에 대한 비율 : vw -->
+     <p style="font-size: 3vw;">너비에 대한 상대 크기</p>
+
+     <h2>margin, border, padding에 대한 개념</h2>
+     <!-- margin:auto는 상하좌우로 margin -->
+     <!-- place-content:center는 수직으로 padding(정렬) -->
+     <!-- text-align:center는 수평으로 padding(정렬) -->
+     <p style="border: 5px solid black; width: 400px; height: 200px; margin: auto; place-content: center; text-align: center;">
+        margin, border, padding 실습
+     </p>
+     <p style="text-align: center;">
+        hello world
+     </p>
+
+     <table border="1" style="border-collapse: collapse; width: 400px; height: 200px; margin: auto; text-align: center;">
+        <caption>테이블정렬</caption>
+        <thead>
+            <tr>
+                <th>컬럼1</th><th>컬럼2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>data1</td><td>data2</td>
+            </tr>
+            <tr>
+                <td>data1</td><td>data2</td>
+            </tr>
+        </tbody>
+     </table>
+
+</body>
+</html>
