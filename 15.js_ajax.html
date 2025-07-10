@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js ajax</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        // $(document).ready : DOM객체가 완전히 로드된 이후에 코드 실행한다라는 의미
+        $(document).ready(function(){
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',
+                success: function(a){
+                    const objt = a;
+                    console.log(objt);
+                    // 서버2에 서버1로부터 받은 값을 다시 요청
+                    // ajax 요청이 다시 시작
+                    // 서버2로 부터 받은값을 서버3으로 다시 요청
+                },
+                error: function(){
+                }
+            })
+        });
+        console.log("hello world");
+    </script>
+</body>
+</html>

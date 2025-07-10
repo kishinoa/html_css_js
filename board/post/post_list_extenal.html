@@ -28,7 +28,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th><th>제목</th>
+                    <th>id</th><th>제목</th><th>글쓴이</th>
                 </tr>
             </thead>
             <tbody id = 'tbodyId'>
@@ -38,9 +38,9 @@
 
     <script>
         async function postApi() {
-            const result = await axios.get("http://localhost:8080/post/list");
+            const result = await axios.get("https://jsonplaceholder.typicode.com/posts");
             for(let i = 0; i < result.data.length; i++) {
-                document.getElementById("tbodyId").innerHTML += `<tr><td>${result.data[i].id}</td><td>${result.data[i].title}</td></tr>`;
+                document.getElementById("tbodyId").innerHTML += `<tr><td>${result.data[i].id}</td><td>${result.data[i].title}</td><td>${result.data[i].userId}</td></tr>`;
             }
         }
         postApi();

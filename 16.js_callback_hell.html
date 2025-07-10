@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback 지옥</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        function callBackHell(){
+            $(document).ready(function(){
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(a){
+                        console.log("a :" + a);
+                        $.ajax({
+                            url: "https://jsonplaceholder.typicode.com/posts/1",
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(b){
+                                console.log("b :" + b);
+                                $.ajax({
+                                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function(c){
+                                        console.log("c :" + c);
+                                    },
+                                    error: function(){
+                                    }
+                                })
+                            },
+                            error: function(){
+                            }
+                        })
+                    },
+                    error: function(){
+                    }
+                })
+            });
+        }
+        callBackHell();
+        console.log("hello world");
+
+    </script>
+</body>
+</html>

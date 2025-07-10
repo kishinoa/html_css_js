@@ -24,19 +24,8 @@
     </nav>
     <h2>게시글 작성</h2>
 
-    <!-- 데이터 형식 2가지, 1. url인코딩 2. multipart/formdata -->
-    <!-- form내의 파일이 포함되는 경우에는 multipart/formdata를 사용 -->
-    <!-- json현식은 순수 html만으론 불가, js를 통해 조립 -->
-    <form
-      action="http://localhost:8080/post/register2"
-      method="post"
-      enctype="application/x-www-form-urlencoded"
-    >
-      <!-- name="hong" &e mail"=hong@naver.com" -->
-
+    <form>
       <div>
-        <!-- label의 for는 input id를 찾아 매핑 -->
-        <!-- label의 내용을 누르면 input박스로 커서가 자동으로 이동됨 -->
         <label for="title">제목</label>
         <input type="text" id="title" name="title" />
       </div>
@@ -52,8 +41,27 @@
         ></textarea>
       </div>
 
-      <!-- form태그에서 전송하는 방법 2가지 1.input태그 2.button태그 -->
-        <button type="submit" class="btn btn-success"> 글쓰기 완료 </button>
+        <button type="button" onclick="postCreate()" class="btn btn-success"> 글쓰기 완료 </button>
     </form>
+
+    <script>
+      async function postCreate() {
+        try{
+          const title = document.getElementById("title").value;
+          const contents = document.getElementById("contents").value;
+          // js의 FormData클래스를 통해 multipart-formdat(또는 url인코딩) 형식의 데이터 조립
+          // formdata형식의 데이터는 title=hello&contents=hello world java...
+          const data = new FormData();
+          data.append("title", title);
+          data.append("contents", contents);
+          await axios.post("http://localhost:8080/post/register2", data);
+          window.location.href="file:///C:/Users/Playdata/Desktop/16/html_css_js/board/post/post_list.html";
+        }
+        catch(e) {
+          console.log(e);
+          alert("실패");
+        }
+      }
+    </script>
   </body>
 </html>

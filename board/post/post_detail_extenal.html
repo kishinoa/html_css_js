@@ -37,6 +37,9 @@
                     <td>제목</td><td id="title"></td>
                 </tr>
                 <tr>
+                    <td>글쓴이</td><td id="userId"></td>
+                </tr>
+                <tr>
                     <td>내용</td><td id="contents"></td>
                 </tr>
             </tbody>
@@ -46,14 +49,13 @@
     <script>
         async function postApi() {
             try {
-                const id = document.getElementById("input").value;
-                const result = await axios.get(`http://localhost:8080/post/detail/${id}`);
+                const result = await axios.get("https://jsonplaceholder.typicode.com/posts/" + document.getElementById("input").value);
                 document.getElementById("id").innerHTML = result.data.id;
                 document.getElementById("title").innerHTML = result.data.title;
-                document.getElementById("contents").innerHTML = result.data.contents;
+                document.getElementById("userId").innerHTML = result.data.userId;
+                document.getElementById("contents").innerHTML = result.data.body;
             }
             catch(e) {
-                console.log(e);
                 alert("해당 ID에 대한 정보가 없습니다.");
             }
             
